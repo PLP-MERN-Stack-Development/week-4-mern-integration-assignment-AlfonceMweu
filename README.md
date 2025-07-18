@@ -41,4 +41,92 @@ A full-stack blog application built with MongoDB, Express.js, React.js, and Node
    git clone https://github.com/yourusername/mern-blog.git
    cd mern-blog
 
-   
+## Setup Instructions
+
+### Set up the backend
+```bash
+cd server
+npm install
+cp .env.example .env
+# Edit .env with your MongoDB URI and JWT secret
+
+Set up the frontend
+bash
+cd ../client
+npm install
+cp .env.example .env
+# Edit .env if you need to change API base URL
+Run the application
+In one terminal (backend):
+
+bash
+cd server
+npm run dev
+In another terminal (frontend):
+
+bash
+cd client
+npm run dev
+Access the application
+Frontend: http://localhost:5173
+
+Backend API: http://localhost:5000
+
+API Documentation
+Authentication
+Endpoint	Method	Description	Protected
+/auth/register	POST	Register new user	No
+/auth/login	POST	Login existing user	No
+Blog Posts
+Endpoint	Method	Description	Protected
+/api/posts	GET	Get all posts	No
+/api/posts	POST	Create new post	Yes
+/api/posts/:id	GET	Get single post	No
+/api/posts/:id	PUT	Update post	Yes
+/api/posts/:id	DELETE	Delete post	Yes
+Categories
+Endpoint	Method	Description	Protected
+/api/categories	GET	Get all categories	No
+/api/categories	POST	Create new category	Yes
+Request/Response Examples
+Create Post (Authenticated)
+
+json
+// Request
+{
+  "title": "My First Post",
+  "content": "This is the content...",
+  "category": "64a1b2c3d4e5f6g7h8i9j0"
+}
+
+// Response (201 Created)
+{
+  "_id": "64a1b2c3d4e5f6g7h8i9j0",
+  "title": "My First Post",
+  "content": "This is the content...",
+  "author": "64a1b2c3d4e5f6g7h8i9j1",
+  "createdAt": "2023-07-01T12:00:00.000Z"
+}
+Environment Variables
+Server (.env)
+
+text
+MONGODB_URI=mongodb://localhost:27017/mern-blog
+JWT_SECRET=your_jwt_secret_key
+PORT=5000
+Client (.env)
+
+text
+VITE_API_BASE_URL=http://localhost:5000
+Technologies Used
+Frontend: React.js, Vite, React Router, Context API
+
+Backend: Node.js, Express.js, MongoDB, Mongoose
+
+Authentication: JWT, bcryptjs
+
+Styling: CSS Modules (or your chosen framework)
+
+License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
